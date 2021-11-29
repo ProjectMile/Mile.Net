@@ -8,7 +8,7 @@ namespace Mile.ModernProjectAssetsGenerator
         static void NanaZipProject()
         {
             string sourceRoot = @"D:\Projects\MouriNaruto\NanaZip\Assets\";
-            string outputPath = @"D:\NanaZipWorkspace";
+            string outputPath = @"D:\TemporaryWorkspace\NanaZipWorkspace";
 
             MsixPackageAssetsGenerator.GenerateApplicationImageAssets(
                 sourceRoot + @"NanaZip_HighResolution_ContrastStandard.png",
@@ -25,7 +25,7 @@ namespace Mile.ModernProjectAssetsGenerator
         static void NagisaProject()
         {
             string sourceRoot = @"D:\Projects\MouriNaruto\Nagisa\Assets\";
-            string outputPath = @"D:\NagisaWorkspace";
+            string outputPath = @"D:\TemporaryWorkspace\NagisaWorkspace";
 
             MsixPackageAssetsGenerator.GenerateApplicationImageAssets(
                 sourceRoot + @"Nagisa_HighResolution_ContrastStandard.png",
