@@ -87,7 +87,7 @@ namespace Mile.NanaZipProjectXmlGenerator
             return Result;
         }
 
-        static void SwitchToCanary()
+        static void SwitchToPreview()
         {
             string ManifestPath =
                 @"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Package.appxmanifest";
@@ -97,10 +97,10 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Encoding.UTF8);
             ManifestContent = ManifestContent.Replace(
                 "DisplayName=\"NanaZip\"",
-                "DisplayName=\"NanaZip (Canary)\"");
+                "DisplayName=\"NanaZip Preview\"");
             ManifestContent =  ManifestContent.Replace(
                 "Name=\"40174MouriNaruto.NanaZip\"",
-                "Name=\"40174MouriNaruto.NanaZip.Canary\"");
+                "Name=\"40174MouriNaruto.NanaZipPreview\"");
             File.WriteAllText(
                 ManifestPath,
                 ManifestContent,
@@ -116,10 +116,10 @@ namespace Mile.NanaZipProjectXmlGenerator
                 ManifestPath,
                 Encoding.UTF8);
             ManifestContent = ManifestContent.Replace(
-                "DisplayName=\"NanaZip (Canary)\"",
+                "DisplayName=\"NanaZip Preview\"",
                 "DisplayName=\"NanaZip\"");
             ManifestContent = ManifestContent.Replace(
-                "Name=\"40174MouriNaruto.NanaZip.Canary\"",
+                "Name=\"40174MouriNaruto.NanaZipPreview\"",
                 "Name=\"40174MouriNaruto.NanaZip\"");
             File.WriteAllText(
                 ManifestPath,
@@ -133,7 +133,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //string Result = GenerateArchiveTypesManifestDefinitions();
 
-            SwitchToCanary();
+            SwitchToPreview();
             //SwitchToRelease();
 
             Console.WriteLine("Hello World!");
