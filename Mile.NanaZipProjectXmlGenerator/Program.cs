@@ -1,7 +1,7 @@
 ﻿using Mile.Net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Text;
 
 namespace Mile.NanaZipProjectXmlGenerator
 {
@@ -87,11 +87,54 @@ namespace Mile.NanaZipProjectXmlGenerator
             return Result;
         }
 
+        static void SwitchToCanary()
+        {
+            string ManifestPath =
+                @"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Package.appxmanifest";
+
+            string ManifestContent = File.ReadAllText(
+                ManifestPath,
+                Encoding.UTF8);
+            ManifestContent = ManifestContent.Replace(
+                "DisplayName=\"NanaZip\"",
+                "DisplayName=\"NanaZip (Canary)\"");
+            ManifestContent =  ManifestContent.Replace(
+                "Name=\"40174MouriNaruto.NanaZip\"",
+                "Name=\"40174MouriNaruto.NanaZip.Canary\"");
+            File.WriteAllText(
+                ManifestPath,
+                ManifestContent,
+                Encoding.UTF8);
+        }
+
+        static void SwitchToRelease()
+        {
+            string ManifestPath =
+                @"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Package.appxmanifest";
+
+            string ManifestContent = File.ReadAllText(
+                ManifestPath,
+                Encoding.UTF8);
+            ManifestContent = ManifestContent.Replace(
+                "DisplayName=\"NanaZip (Canary)\"",
+                "DisplayName=\"NanaZip\"");
+            ManifestContent = ManifestContent.Replace(
+                "Name=\"40174MouriNaruto.NanaZip.Canary\"",
+                "Name=\"40174MouriNaruto.NanaZip\"");
+            File.WriteAllText(
+                ManifestPath,
+                ManifestContent,
+                Encoding.UTF8);
+        }
+
         public static void Main(string[] args)
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            string Result = GenerateArchiveTypesManifestDefinitions();
+            //string Result = GenerateArchiveTypesManifestDefinitions();
+
+            SwitchToCanary();
+            //SwitchToRelease();
 
             Console.WriteLine("Hello World!");
 
