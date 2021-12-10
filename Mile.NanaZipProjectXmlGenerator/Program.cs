@@ -89,42 +89,100 @@ namespace Mile.NanaZipProjectXmlGenerator
 
         static void SwitchToPreview()
         {
-            string ManifestPath =
-                @"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Package.appxmanifest";
+            string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip";
 
-            string ManifestContent = File.ReadAllText(
-                ManifestPath,
-                Encoding.UTF8);
-            ManifestContent = ManifestContent.Replace(
-                "DisplayName=\"NanaZip\"",
-                "DisplayName=\"NanaZip Preview\"");
-            ManifestContent =  ManifestContent.Replace(
-                "Name=\"40174MouriNaruto.NanaZip\"",
-                "Name=\"40174MouriNaruto.NanaZipPreview\"");
-            File.WriteAllText(
-                ManifestPath,
-                ManifestContent,
-                Encoding.UTF8);
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipPackage\Package.appxmanifest",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "DisplayName=\"NanaZip\"",
+                    "DisplayName=\"NanaZip Preview\"");
+                Content =  Content.Replace(
+                    "Name=\"40174MouriNaruto.NanaZip\"",
+                    "Name=\"40174MouriNaruto.NanaZipPreview\"");
+                Content =  Content.Replace(
+                    "<DisplayName>NanaZip</DisplayName>",
+                    "<DisplayName>NanaZip Preview</DisplayName>");
+                Content =  Content.Replace(
+                    "CAE3F1D4-7765-4D98-A060-52CD14D56EAB",
+                    "469D94E9-6AF4-4395-B396-99B1308F8CE5");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.UTF8);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipShellExtension\NanaZipShellExtension.cpp",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "return ::SHStrDupW(L\"NanaZip\", ppszName);",
+                    "return ::SHStrDupW(L\"NanaZip Preview\", ppszName);");
+                Content =  Content.Replace(
+                    "CAE3F1D4-7765-4D98-A060-52CD14D56EAB",
+                    "469D94E9-6AF4-4395-B396-99B1308F8CE5");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.UTF8);
+            }
         }
 
         static void SwitchToRelease()
         {
-            string ManifestPath =
-                @"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Package.appxmanifest";
+            string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip";
 
-            string ManifestContent = File.ReadAllText(
-                ManifestPath,
-                Encoding.UTF8);
-            ManifestContent = ManifestContent.Replace(
-                "DisplayName=\"NanaZip Preview\"",
-                "DisplayName=\"NanaZip\"");
-            ManifestContent = ManifestContent.Replace(
-                "Name=\"40174MouriNaruto.NanaZipPreview\"",
-                "Name=\"40174MouriNaruto.NanaZip\"");
-            File.WriteAllText(
-                ManifestPath,
-                ManifestContent,
-                Encoding.UTF8);
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipPackage\Package.appxmanifest",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "DisplayName=\"NanaZip Preview\"",
+                    "DisplayName=\"NanaZip\"");
+                Content = Content.Replace(
+                    "Name=\"40174MouriNaruto.NanaZipPreview\"",
+                    "Name=\"40174MouriNaruto.NanaZip\"");
+                Content =  Content.Replace(
+                    "<DisplayName>NanaZip Preview</DisplayName>",
+                    "<DisplayName>NanaZip</DisplayName>");
+                Content =  Content.Replace(
+                    "469D94E9-6AF4-4395-B396-99B1308F8CE5",
+                    "CAE3F1D4-7765-4D98-A060-52CD14D56EAB");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.UTF8);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipShellExtension\NanaZipShellExtension.cpp",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "return ::SHStrDupW(L\"NanaZip Preview\", ppszName);",
+                    "return ::SHStrDupW(L\"NanaZip\", ppszName);");
+                Content =  Content.Replace(
+                    "469D94E9-6AF4-4395-B396-99B1308F8CE5",
+                    "CAE3F1D4-7765-4D98-A060-52CD14D56EAB");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.UTF8);
+            }
         }
 
         public static void Main(string[] args)
