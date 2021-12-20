@@ -44,13 +44,7 @@ namespace Mile.LvglProjectXmlGenerator
                 rootPath + @"\lvgl",
                 rootPath + @"\",
                 rootPath,
-                @"LVGL.Core");
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\lv_demos",
-                rootPath + @"\",
-                rootPath,
-                @"LVGL.Demonstrations");
+                @"LVGL.Portable");
         }
 
         static void LvglSimulatorProject()
@@ -62,13 +56,7 @@ namespace Mile.LvglProjectXmlGenerator
                 rootPath + @"\lvgl",
                 rootPath + @"\",
                 rootPath,
-                @"LVGL.Core");
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\lv_demos",
-                rootPath + @"\",
-                rootPath,
-                @"LVGL.Demonstrations");
+                @"LVGL.Portable");
 
             VisualStudioCppItemsProjectGenerator.Generate(
                 rootPath + @"\lv_drivers",
@@ -81,8 +69,8 @@ namespace Mile.LvglProjectXmlGenerator
         static void Main(string[] args)
         {
             //MileUefiProject();
-            MileLilyProject();
-            //LvglWindowsProject();
+            //MileLilyProject();
+            LvglWindowsProject();
             //LvglSimulatorProject();
 
             Console.WriteLine("Hello World!");
