@@ -23,18 +23,6 @@ namespace Mile.LvglProjectXmlGenerator
                 @"LVGL.Demonstrations");
         }
 
-        static void MileLilyProject()
-        {
-            string rootPath =
-                @"D:\Projects\ProjectMile\Mile.Lily\Mile.Lily";
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\lvgl",
-                rootPath + @"\",
-                rootPath,
-                @"LVGL.Core");
-        }
-
         static void LvglWindowsProject()
         {
             string rootPath =
@@ -69,7 +57,6 @@ namespace Mile.LvglProjectXmlGenerator
         static void Main(string[] args)
         {
             //MileUefiProject();
-            //MileLilyProject();
             LvglWindowsProject();
             //LvglSimulatorProject();
 
