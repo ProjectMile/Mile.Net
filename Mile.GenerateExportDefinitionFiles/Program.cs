@@ -73,9 +73,9 @@ namespace Mile.GenerateExportDefinitionFiles
             int SymbolsCount = 0;
             {
                 byte[] RawBytes = new Span<byte>(
-                Content,
-                CurrentOffset,
-                4).ToArray();
+                    Content,
+                    CurrentOffset,
+                    4).ToArray();
                 if (BitConverter.IsLittleEndian)
                 {
                     Array.Reverse(RawBytes);
