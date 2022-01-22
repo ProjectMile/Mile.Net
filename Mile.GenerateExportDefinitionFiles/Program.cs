@@ -129,16 +129,16 @@ namespace Mile.GenerateExportDefinitionFiles
             List<KeyValuePair<string, string>> RootPaths = new List<KeyValuePair<string, string>> 
             {
                 new KeyValuePair<string, string>(
-                     ProjectRootPath + @"vcpkg\packages\ffmpeg_arm-windows-static\lib\",
+                     ProjectRootPath + @"Mile.FFmpeg.Vcpkg\packages\ffmpeg_arm-windows-static\lib\",
                      ProjectRootPath + @"Mile.FFmpeg\Mile.FFmpeg.ARM.def"),
                 new KeyValuePair<string, string>(
-                    ProjectRootPath + @"vcpkg\packages\ffmpeg_arm64-windows-static\lib\",
+                    ProjectRootPath + @"Mile.FFmpeg.Vcpkg\packages\ffmpeg_arm64-windows-static\lib\",
                     ProjectRootPath + @"Mile.FFmpeg\Mile.FFmpeg.ARM64.def"),
                 new KeyValuePair<string, string>(
-                    ProjectRootPath + @"vcpkg\packages\ffmpeg_x64-windows-static\lib\",
+                    ProjectRootPath + @"Mile.FFmpeg.Vcpkg\packages\ffmpeg_x64-windows-static\lib\",
                     ProjectRootPath + @"Mile.FFmpeg\Mile.FFmpeg.x64.def"),
                 new KeyValuePair<string, string>(
-                    ProjectRootPath + @"vcpkg\packages\ffmpeg_x86-windows-static\lib\",
+                    ProjectRootPath + @"Mile.FFmpeg.Vcpkg\packages\ffmpeg_x86-windows-static\lib\",
                     ProjectRootPath + @"Mile.FFmpeg\Mile.FFmpeg.Win32.def")
             };
 
@@ -158,9 +158,6 @@ namespace Mile.GenerateExportDefinitionFiles
                         "avfilter_;av_"),
                     new KeyValuePair<string, string>(
                         RootPath.Key + "avformat.lib",
-                        "av"),
-                    new KeyValuePair<string, string>(
-                        RootPath.Key + "avresample.lib",
                         "av"),
                     new KeyValuePair<string, string>(
                         RootPath.Key + "avutil.lib",
