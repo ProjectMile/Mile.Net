@@ -73,19 +73,23 @@ namespace Mile.NanaZipProjectXmlGenerator
             foreach (var ArchiveType in ArchiveTypes)
             {
                 Result += string.Format(
-                    "        <uap:Extension Category=\"windows.fileTypeAssociation\">\r\n" +
-                    "          <uap:FileTypeAssociation Name=\"archivetype_{0}\">\r\n" +
-                    "            <uap:Logo>Assets\\ArchiveFile.png</uap:Logo>\r\n" +
-                    "            <uap:DisplayName>NanaZip - {0} Archive</uap:DisplayName>\r\n" +
-                    "            <uap:SupportedFileTypes>\r\n" +
-                    "              <uap:FileType>.{0}</uap:FileType>\r\n" +
-                    "            </uap:SupportedFileTypes>\r\n" +
-                    "          </uap:FileTypeAssociation>\r\n" +
-                    "        </uap:Extension>\r\n",
+                    "              <uap:FileType>.{0}</uap:FileType>\r\n",
                     ArchiveType);
             }
 
-            return Result;
+            return string.Format(
+                "        <uap:Extension Category=\"windows.fileTypeAssociation\">\r\n" +
+                "          <uap:FileTypeAssociation Name=\"fileassociations\">\r\n" +
+                "            <uap:Logo>Assets\\ArchiveFile.png</uap:Logo>\r\n" +
+                "            <uap:SupportedFileTypes>\r\n" +
+                "{0}" +
+                "            </uap:SupportedFileTypes>\r\n" +
+                "            <uap2:SupportedVerbs>\r\n" +
+                "              <uap3:Verb Id=\"open\" Parameters=\"&quot;%1&quot;\">open</uap3:Verb>\r\n" +
+                "            </uap2:SupportedVerbs>\r\n" +
+                "          </uap:FileTypeAssociation>\r\n" +
+                "        </uap:Extension>\r\n",
+                Result);
         }
 
         static void SwitchToPreview()
@@ -238,12 +242,12 @@ namespace Mile.NanaZipProjectXmlGenerator
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            //string Result = GenerateArchiveTypesManifestDefinitions();
+            string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
             //SwitchToRelease();
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
             Console.WriteLine("Hello World!");
 
