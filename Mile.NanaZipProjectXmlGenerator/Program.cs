@@ -1,7 +1,9 @@
 ﻿using Mile.Net;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 
 namespace Mile.NanaZipProjectXmlGenerator
 {
@@ -238,16 +240,105 @@ namespace Mile.NanaZipProjectXmlGenerator
             }
         }
 
+        public static void TxtLangToResw()
+        {
+            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\IDE\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
+            string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
+            string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
+            string NanaZipReswRoot = $@"{NanaZipSourceRoot}\NanaZipPackage\Strings\";
+
+            SortedSet<string> unspportedLang = new()
+            {
+                "an",
+                "ast",
+                "ba",
+                "br",
+                "co",
+                "ext",
+                "fur",
+                "io",
+                "kaa",
+                "kab",
+                "ku",
+                "lij",
+                "mng2",
+                "sa"
+            };
+
+            Dictionary<string, string> langMapping = new()
+            {
+                { "az", "az-arab" },
+                { "ku-ckb", "ku-arab" },
+                { "ky", "ky-kg" },
+                { "mn", "mn-cyrl" },
+                { "mng", "mn-mong" },
+                { "sr-spc", "sr-cyrl" },
+                { "sr-spl", "sr-Latn" },
+                { "tg", "tg-arab" },
+                { "tk", "tk-cyrl" },
+                { "tt", "tt-arab" },
+                { "ug", "ug-arab" },
+                { "uz", "uz-latn" },
+                { "va", "ca-es-valencia" },
+                { "yo", "yo-latn" },
+                { "zh-cn", "zh-Hans" },
+                { "zh-tw", "zh-Hant" },
+            };
+
+            foreach (var txtFile in Directory.GetFiles(SevenZipLangRoot))
+            {
+                string langName = Path.GetFileNameWithoutExtension(txtFile);
+                if (unspportedLang.Contains(langName)) { continue; }
+                if (langMapping.ContainsKey(langName))
+                {
+                    langMapping.TryGetValue(langName, out langName);
+                }
+
+                XmlDocument resw = new();
+                resw.Load(ReswTemplatePath);
+                int resourceID = new();
+
+                foreach (string line in File.ReadLines(txtFile))
+                {
+                    if (line.StartsWith(';')) { continue; }
+                    if (int.TryParse(line, out var val))
+                    {
+                        resourceID = val;
+                    }
+                    else if (line.Length > 0)
+                    {
+                        XmlElement data = resw.CreateElement("data");
+                        data.SetAttribute("name", $"Resource{resourceID}");
+                        data.SetAttribute("xml:space", "preserve");
+
+                        XmlElement dataValue = resw.CreateElement("value");
+                        dataValue.InnerText = line;
+
+                        data.AppendChild(dataValue);
+                        resw.DocumentElement.AppendChild(data);
+
+                        resourceID++;
+                    }
+                }
+                
+                string resourcePath = $@"{NanaZipReswRoot}\{langName}\";
+                Directory.CreateDirectory(resourcePath);
+                resw.Save($@"{resourcePath}\Legacy.resw");
+            }
+        }
+
         public static void Main(string[] args)
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            string Result = GenerateArchiveTypesManifestDefinitions();
+            //string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
             //SwitchToRelease();
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
+
+            //TxtLangToResw();
 
             Console.WriteLine("Hello World!");
 
