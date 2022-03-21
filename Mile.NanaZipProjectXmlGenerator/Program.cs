@@ -240,9 +240,9 @@ namespace Mile.NanaZipProjectXmlGenerator
             }
         }
 
-        public static void TxtLangToResw()
+        public static void ConvertSevenZipLanguageFilesToModernResources()
         {
-            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\IDE\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
+            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
             string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
             string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
             string NanaZipReswRoot = $@"{NanaZipSourceRoot}\NanaZipPackage\Strings\";
@@ -338,7 +338,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
-            //TxtLangToResw();
+            ConvertSevenZipLanguageFilesToModernResources();
 
             Console.WriteLine("Hello World!");
 
