@@ -240,12 +240,40 @@ namespace Mile.NanaZipProjectXmlGenerator
             }
         }
 
-        public static void ConvertSevenZipLanguageFilesToModernResources()
+        static Dictionary<int, string> ParseSevenZipLanguageFile(
+            string path)
         {
-            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
+            Dictionary<int, string> Result = new Dictionary<int, string>();
+
+            int resourceID = 0;
+
+            foreach (string line in File.ReadLines(path))
+            {
+                if (line.StartsWith(';'))
+                {
+                    continue;
+                }
+
+                if (int.TryParse(line, out var val))
+                {
+                    resourceID = val;
+                }
+                else if (line.Length > 0)
+                {
+                    Result.Add(resourceID, line);
+                    ++resourceID;
+                }
+            }
+
+            return Result;
+        }
+
+        static string ConvertSevenZipLanguageFilesToModernResources()
+        {
+            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
             string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
             string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
-            string NanaZipReswRoot = $@"{NanaZipSourceRoot}\NanaZipPackage\Strings\";
+            string NanaZipStringsRoot = $@"{NanaZipSourceRoot}\NanaZipPackage\Strings\";
 
             SortedSet<string> unspportedLang = new()
             {
@@ -285,6 +313,8 @@ namespace Mile.NanaZipProjectXmlGenerator
                 { "zh-tw", "zh-Hant" },
             };
 
+            string Result = "";
+
             foreach (var txtFile in Directory.GetFiles(SevenZipLangRoot))
             {
                 string langName = Path.GetFileNameWithoutExtension(txtFile);
@@ -296,35 +326,30 @@ namespace Mile.NanaZipProjectXmlGenerator
 
                 XmlDocument resw = new();
                 resw.Load(ReswTemplatePath);
-                int resourceID = new();
 
-                foreach (string line in File.ReadLines(txtFile))
+                foreach (var item in ParseSevenZipLanguageFile(txtFile))
                 {
-                    if (line.StartsWith(';')) { continue; }
-                    if (int.TryParse(line, out var val))
-                    {
-                        resourceID = val;
-                    }
-                    else if (line.Length > 0)
-                    {
-                        XmlElement data = resw.CreateElement("data");
-                        data.SetAttribute("name", $"Resource{resourceID}");
-                        data.SetAttribute("xml:space", "preserve");
+                    XmlElement data = resw.CreateElement("data");
 
-                        XmlElement dataValue = resw.CreateElement("value");
-                        dataValue.InnerText = line;
+                    data.SetAttribute("name", $"Resource{item.Key}");
+                    data.SetAttribute("xml:space", "preserve");
 
-                        data.AppendChild(dataValue);
-                        resw.DocumentElement.AppendChild(data);
+                    XmlElement dataValue = resw.CreateElement("value");
+                    dataValue.InnerText = item.Value;
 
-                        resourceID++;
-                    }
+                    data.AppendChild(dataValue);
+
+                    resw.DocumentElement.AppendChild(data);
                 }
                 
-                string resourcePath = $@"{NanaZipReswRoot}\{langName}\";
+                string resourcePath = $@"{NanaZipStringsRoot}\{langName}\";
                 Directory.CreateDirectory(resourcePath);
                 resw.Save($@"{resourcePath}\Legacy.resw");
+
+                Result += $"{langName};";
             }
+
+            return Result;
         }
 
         public static void Main(string[] args)
@@ -338,7 +363,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
-            ConvertSevenZipLanguageFilesToModernResources();
+            string Result = ConvertSevenZipLanguageFilesToModernResources();
 
             Console.WriteLine("Hello World!");
 
