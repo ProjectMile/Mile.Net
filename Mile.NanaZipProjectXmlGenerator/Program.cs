@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 
@@ -9,6 +10,9 @@ namespace Mile.NanaZipProjectXmlGenerator
 {
     public class Program
     {
+        [DllImport(@"kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        static extern ushort LocaleNameToLCID(string lpName, uint dwFlags);
+
         static void GenerateSharedSevenZipZStandardProject()
         {
             string rootPath =
@@ -240,10 +244,10 @@ namespace Mile.NanaZipProjectXmlGenerator
             }
         }
 
-        static Dictionary<int, string> ParseSevenZipLanguageFile(
+        static SortedDictionary<int, string> ParseSevenZipLanguageFile(
             string path)
         {
-            Dictionary<int, string> Result = new Dictionary<int, string>();
+            SortedDictionary<int, string> Result = new();
 
             int resourceID = 0;
 
@@ -263,8 +267,11 @@ namespace Mile.NanaZipProjectXmlGenerator
                     Result.Add(resourceID, line);
                     ++resourceID;
                 }
+                else
+                {
+                    ++resourceID;
+                }
             }
-
             return Result;
         }
 
@@ -341,7 +348,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
                     resw.DocumentElement.AppendChild(data);
                 }
-                
+
                 string resourcePath = $@"{NanaZipStringsRoot}\{langName}\";
                 Directory.CreateDirectory(resourcePath);
                 resw.Save($@"{resourcePath}\Legacy.resw");
@@ -350,6 +357,126 @@ namespace Mile.NanaZipProjectXmlGenerator
             }
 
             return Result;
+        }
+
+        static void ConvertSevenZipLanguageFilesToSfxSelfContain()
+        {
+            string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
+            string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
+            string NanaZipSfxRoot = $@"{NanaZipSourceRoot}\NanaZipSfxWindows\";
+            string[] SfxResHeader =
+            {
+                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\Bundles\SFXWin\resource.h",
+                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\FileManager\ProgressDialog2Res.h",
+                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\GUI\ExtractDialogRes.h",
+                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\FileManager\OverwriteDialogRes.h",
+                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\GUI\ExtractRes.h",
+            };
+            SortedDictionary<int, string> resourceDefine = new()
+            {
+                { 1012, "IDS_PROP_MTIME" }
+            };
+
+            int formatLength = 0;
+            foreach (string headerFile in SfxResHeader)
+            {
+                foreach (string line in File.ReadLines(headerFile))
+                {
+                    if (!line.StartsWith("#define IDS_") && !line.StartsWith("#define IDT_"))
+                    {
+                        continue;
+                    }
+                    string[] splitLine = line.Split(
+                        ' ',
+                        StringSplitOptions.RemoveEmptyEntries |
+                        StringSplitOptions.TrimEntries);
+                    int.TryParse(splitLine[2], out int resourceID);
+                    if (resourceID < 400)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        resourceDefine.Add(resourceID, splitLine[1]);
+                    }
+                }
+            }
+            foreach (string strLength in resourceDefine.Values)
+            {
+                formatLength = Math.Max(formatLength, strLength.Length);
+            }
+            formatLength = (formatLength / 4 + 1) * 4;
+
+            SortedDictionary<string, string> langMapping = new()
+            {
+                { "eu", "eu-es" },
+                { "ku-ckb", "ku-arab" },
+                { "mng", "mn-mong" },
+                { "nb", "nb-no" },
+                { "nn", "nn-no" },
+                { "sr-spc", "sr-cyrl" },
+                { "sr-spl", "sr-Latn" },
+                { "va", "ca-es-valencia" },
+                { "zh-cn", "zh-Hans" },
+            };
+
+            LinkedList<string> resourceContent = new();
+            foreach (string headerFile in SfxResHeader)
+            {
+                resourceContent.AddLast($"#include \"{Path.GetFileName(headerFile)}\"");
+            }
+            resourceContent.AddLast("");
+            foreach (string txtFile in Directory.GetFiles(SevenZipLangRoot))
+            {
+                string fileName = Path.GetFileName(txtFile);
+
+                string langName = Path.GetFileNameWithoutExtension(txtFile);
+                if (langMapping.ContainsKey(langName))
+                {
+                    langMapping.TryGetValue(langName, out langName);
+                }
+
+                uint dwFlags = langName.Contains('-') ? (uint)0x00000000 : 0x08000000;
+                ushort LCID = LocaleNameToLCID(langName, dwFlags);
+                ushort primaryLanguageID = (ushort)(LCID & (ushort)0x03FF);
+                ushort subLanguageID = (ushort)(LCID >> 10);
+
+                if (primaryLanguageID == 0x00)
+                {
+                    Console.WriteLine($"Error: Unsupported Language: {langName}");
+                    continue;
+                }
+
+                SortedDictionary<int, string> stringMap = ParseSevenZipLanguageFile(txtFile);
+                resourceContent.AddLast($"// {fileName} - {langName} - [{stringMap[1]} ({stringMap[2]})]");
+                resourceContent.AddLast($"LANGUAGE 0x{primaryLanguageID:X2}, 0x{subLanguageID:X2}");
+                resourceContent.AddLast("STRINGTABLE");
+                resourceContent.AddLast("BEGIN");
+
+                foreach (KeyValuePair<int, string> item in resourceDefine)
+                {
+                    try
+                    {
+                        resourceContent.AddLast(string.Format(
+                            "    {0}L\"{1}\"",
+                            item.Value.PadRight(formatLength, ' '),
+                            stringMap[item.Key].Replace("\"", "\"\"")
+                            ));
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Warning: Missing Resource ID{item.Key} in {fileName}");
+                        continue;
+                    }
+                }
+
+                resourceContent.AddLast("END");
+                resourceContent.AddLast("");
+            }
+            File.WriteAllLines(
+                $@"{NanaZipSfxRoot}\NanaZipSfxWindows.rc",
+                resourceContent,
+                Encoding.Unicode);
         }
 
         public static void Main(string[] args)
@@ -363,7 +490,9 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
-            string Result = ConvertSevenZipLanguageFilesToModernResources();
+            //string Result = ConvertSevenZipLanguageFilesToModernResources();
+
+            ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
