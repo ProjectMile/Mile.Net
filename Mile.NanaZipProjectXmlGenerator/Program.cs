@@ -240,10 +240,10 @@ namespace Mile.NanaZipProjectXmlGenerator
             }
         }
 
-        static Dictionary<int, string> ParseSevenZipLanguageFile(
+        static SortedDictionary<int, string> ParseSevenZipLanguageFile(
             string path)
         {
-            Dictionary<int, string> Result = new Dictionary<int, string>();
+            SortedDictionary<int, string> Result = new();
 
             int resourceID = 0;
 
@@ -263,8 +263,11 @@ namespace Mile.NanaZipProjectXmlGenerator
                     Result.Add(resourceID, line);
                     ++resourceID;
                 }
+                else
+                {
+                    ++resourceID;
+                }
             }
-
             return Result;
         }
 
