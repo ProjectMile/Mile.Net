@@ -145,6 +145,54 @@ namespace Mile.NanaZipProjectXmlGenerator
                     Content,
                     Encoding.UTF8);
             }
+
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipPackage\NanaZipPackage.wapproj",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "<Content Include=\"..\\Assets\\PackageAssets\\**\\*\">",
+                    "<Content Include=\"..\\Assets\\PreviewPackageAssets\\**\\*\">");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.UTF8);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\UI\FileManager\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZip.ico\"",
+                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZipPreview.ico\"");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\UI\GUI\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "IDI_ICON ICON \"../../../../../Assets/NanaZip.ico\"",
+                    "IDI_ICON ICON \"../../../../../Assets/NanaZipPreview.ico\"");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
         }
 
         static void SwitchToRelease()
@@ -193,6 +241,54 @@ namespace Mile.NanaZipProjectXmlGenerator
                     Path,
                     Content,
                     Encoding.UTF8);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipPackage\NanaZipPackage.wapproj",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "<Content Include=\"..\\Assets\\PreviewPackageAssets\\**\\*\">",
+                    "<Content Include=\"..\\Assets\\PackageAssets\\**\\*\">");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.UTF8);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\UI\FileManager\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZipPreview.ico\"",
+                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZip.ico\"");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\UI\GUI\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "IDI_ICON ICON \"../../../../../Assets/NanaZipPreview.ico\"",
+                    "IDI_ICON ICON \"../../../../../Assets/NanaZip.ico\"");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
             }
         }
 
@@ -277,7 +373,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
         static string ConvertSevenZipLanguageFilesToModernResources()
         {
-            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
+            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
             string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
             string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
             string NanaZipStringsRoot = $@"{NanaZipSourceRoot}\NanaZipPackage\Strings\";
@@ -485,14 +581,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //string Result = GenerateArchiveTypesManifestDefinitions();
 
-            //SwitchToPreview();
+            SwitchToPreview();
             //SwitchToRelease();
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
 
-            ConvertSevenZipLanguageFilesToSfxSelfContain();
+            //ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
