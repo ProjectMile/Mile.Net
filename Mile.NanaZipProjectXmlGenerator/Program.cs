@@ -463,7 +463,93 @@ namespace Mile.NanaZipProjectXmlGenerator
             //string[] SfxResHeader = {};
             SortedDictionary<int, string> resourceDefine = new()
             {
-                { 1012, "IDS_PROP_MTIME" }
+                { 444, "IDB_PROGRESS_BACKGROUND" },
+                { 446, "IDB_PAUSE" },
+                { 3900, "IDT_PROGRESS_ELAPSED" },
+                { 3901, "IDT_PROGRESS_REMAINING" },
+                { 1032, "IDT_PROGRESS_FILES" },
+                { 3906, "IDT_PROGRESS_ERRORS" },
+                { 3902, "IDT_PROGRESS_TOTAL" },
+                { 3903, "IDT_PROGRESS_SPEED" },
+                { 3904, "IDT_PROGRESS_PROCESSED" },
+                { 1008, "IDT_PROGRESS_PACKED" },
+                { 3905, "IDT_PROGRESS_RATIO" },
+
+                { 3401, "IDT_EXTRACT_EXTRACT_TO" },
+
+                { 3500, "IDD_OVERWRITE" },
+                { 3501, "IDT_OVERWRITE_HEADER" },
+                { 3502, "IDT_OVERWRITE_QUESTION_BEGIN" },
+                { 3503, "IDT_OVERWRITE_QUESTION_END" },
+                { 440, "IDB_YES_TO_ALL" },
+                { 3505, "IDB_AUTO_RENAME" },
+                { 441, "IDB_NO_TO_ALL" },
+
+                { 3800, "IDD_PASSWORD" },
+                { 3801, "IDT_PASSWORD_ENTER" },
+                { 3803, "IDX_PASSWORD_SHOW" },
+
+                { 408, "IDS_CLOSE" },
+                { 411, "IDS_CONTINUE" },
+
+                { 445, "IDS_PROGRESS_FOREGROUND" },
+                { 447, "IDS_PROGRESS_PAUSED" },
+
+                { 448, "IDS_PROGRESS_ASK_CANCEL" },
+
+                { 1012, "IDS_PROP_MTIME" },
+
+                { 3000, "IDS_MEM_ERROR" },
+                { 3003, "IDS_CANNOT_CREATE_FOLDER" },
+                { 3004, "IDS_UPDATE_NOT_SUPPORTED" },
+                { 3005, "IDS_CANT_OPEN_ARCHIVE" },
+                { 3006, "IDS_CANT_OPEN_ENCRYPTED_ARCHIVE" },
+                { 3007, "IDS_UNSUPPORTED_ARCHIVE_TYPE" },
+
+                { 3017, "IDS_CANT_OPEN_AS_TYPE" },
+                { 3018, "IDS_IS_OPEN_AS_TYPE" },
+                { 3019, "IDS_IS_OPEN_WITH_OFFSET" },
+
+                { 3300, "IDS_PROGRESS_EXTRACTING" },
+
+                { 3325, "IDS_PROGRESS_SKIPPING" },
+
+                { 3402, "IDS_EXTRACT_SET_FOLDER" },
+
+                { 3411, "IDS_EXTRACT_PATHS_FULL" },
+                { 3412, "IDS_EXTRACT_PATHS_NO" },
+                { 3413, "IDS_EXTRACT_PATHS_ABS" },
+                { 3414, "IDS_PATH_MODE_RELAT" },
+                { 3421, "IDS_EXTRACT_OVERWRITE_ASK" },
+                { 3422, "IDS_EXTRACT_OVERWRITE_WITHOUT_PROMPT" },
+                { 3423, "IDS_EXTRACT_OVERWRITE_SKIP_EXISTING" },
+
+                { 3424, "IDS_EXTRACT_OVERWRITE_RENAME" },
+                { 3425, "IDS_EXTRACT_OVERWRITE_RENAME_EXISTING" },
+
+                { 3504, "IDS_FILE_SIZE" },
+
+                { 3700, "IDS_EXTRACT_MESSAGE_UNSUPPORTED_METHOD" },
+                { 3701, "IDS_EXTRACT_MESSAGE_DATA_ERROR" },
+                { 3702, "IDS_EXTRACT_MESSAGE_CRC_ERROR" },
+                { 3703, "IDS_EXTRACT_MESSAGE_DATA_ERROR_ENCRYPTED" },
+                { 3704, "IDS_EXTRACT_MESSAGE_CRC_ERROR_ENCRYPTED" },
+                { 3710, "IDS_EXTRACT_MSG_WRONG_PSW_GUESS" },
+
+                { 3721, "IDS_EXTRACT_MSG_UNSUPPORTED_METHOD" },
+                { 3722, "IDS_EXTRACT_MSG_DATA_ERROR" },
+                { 3723, "IDS_EXTRACT_MSG_CRC_ERROR" },
+                { 3724, "IDS_EXTRACT_MSG_UNAVAILABLE_DATA" },
+                { 3725, "IDS_EXTRACT_MSG_UEXPECTED_END" },
+                { 3726, "IDS_EXTRACT_MSG_DATA_AFTER_END" },
+                { 3727, "IDS_EXTRACT_MSG_IS_NOT_ARC" },
+
+                { 3728, "IDS_EXTRACT_MSG_HEADERS_ERROR" },
+                { 3729, "IDS_EXTRACT_MSG_WRONG_PSW_CLAIM" },
+
+                { 3763, "IDS_OPEN_MSG_UNAVAILABLE_START" },
+                { 3764, "IDS_OPEN_MSG_UNCONFIRMED_START" },
+                { 3768, "IDS_OPEN_MSG_UNSUPPORTED_FEATURE" },
             };
 
             int formatLength = 0;
@@ -526,12 +612,16 @@ namespace Mile.NanaZipProjectXmlGenerator
             //{
             //    resourceContent.AddLast($"#include \"{Path.GetFileName(headerFile)}\"");
             //}
-            resourceContent.AddLast("");
+            resourceContent.AddLast($"#include \"NanaZipSfxWindowsResources.h\"");
             foreach (string txtFile in Directory.GetFiles(SevenZipLangRoot))
             {
                 string fileName = Path.GetFileName(txtFile);
 
                 string langName = Path.GetFileNameWithoutExtension(txtFile);
+                if (langName == "en")
+                {
+                    continue;
+                }
                 if (langMapping.ContainsKey(langName))
                 {
                     langMapping.TryGetValue(langName, out langName);
@@ -559,7 +649,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                     try
                     {
                         resourceContent.AddLast(string.Format(
-                            "    {0}L\"{1}\"",
+                            "    {0}\"{1}\"",
                             item.Value.PadRight(formatLength, ' '),
                             stringMap[item.Key].Replace("\"", "\"\"")
                             ));
