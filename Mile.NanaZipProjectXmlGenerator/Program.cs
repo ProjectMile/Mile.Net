@@ -112,13 +112,13 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Content = Content.Replace(
                     "DisplayName=\"NanaZip\"",
                     "DisplayName=\"NanaZip Preview\"");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "Name=\"40174MouriNaruto.NanaZip\"",
                     "Name=\"40174MouriNaruto.NanaZipPreview\"");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "<DisplayName>NanaZip</DisplayName>",
                     "<DisplayName>NanaZip Preview</DisplayName>");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "CAE3F1D4-7765-4D98-A060-52CD14D56EAB",
                     "469D94E9-6AF4-4395-B396-99B1308F8CE5");
                 File.WriteAllText(
@@ -137,7 +137,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Content = Content.Replace(
                     "return ::SHStrDupW(L\"NanaZip\", ppszName);",
                     "return ::SHStrDupW(L\"NanaZip Preview\", ppszName);");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "CAE3F1D4-7765-4D98-A060-52CD14D56EAB",
                     "469D94E9-6AF4-4395-B396-99B1308F8CE5");
                 File.WriteAllText(
@@ -212,10 +212,10 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Content = Content.Replace(
                     "Name=\"40174MouriNaruto.NanaZipPreview\"",
                     "Name=\"40174MouriNaruto.NanaZip\"");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "<DisplayName>NanaZip Preview</DisplayName>",
                     "<DisplayName>NanaZip</DisplayName>");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "469D94E9-6AF4-4395-B396-99B1308F8CE5",
                     "CAE3F1D4-7765-4D98-A060-52CD14D56EAB");
                 File.WriteAllText(
@@ -234,7 +234,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Content = Content.Replace(
                     "return ::SHStrDupW(L\"NanaZip Preview\", ppszName);",
                     "return ::SHStrDupW(L\"NanaZip\", ppszName);");
-                Content =  Content.Replace(
+                Content = Content.Replace(
                     "469D94E9-6AF4-4395-B396-99B1308F8CE5",
                     "CAE3F1D4-7765-4D98-A060-52CD14D56EAB");
                 File.WriteAllText(
@@ -460,48 +460,53 @@ namespace Mile.NanaZipProjectXmlGenerator
             string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
             string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
             string NanaZipSfxRoot = $@"{NanaZipSourceRoot}\NanaZipSfxWindows\";
-            string[] SfxResHeader =
-            {
-                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\Bundles\SFXWin\resource.h",
-                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\FileManager\ProgressDialog2Res.h",
-                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\GUI\ExtractDialogRes.h",
-                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\FileManager\OverwriteDialogRes.h",
-                $@"{NanaZipSourceRoot}\SevenZip\CPP\7zip\UI\GUI\ExtractRes.h",
-            };
+            //string[] SfxResHeader = {};
             SortedDictionary<int, string> resourceDefine = new()
             {
                 { 1012, "IDS_PROP_MTIME" }
             };
 
             int formatLength = 0;
-            foreach (string headerFile in SfxResHeader)
-            {
-                foreach (string line in File.ReadLines(headerFile))
-                {
-                    if (!line.StartsWith("#define IDS_") && !line.StartsWith("#define IDT_"))
-                    {
-                        continue;
-                    }
-                    string[] splitLine = line.Split(
-                        ' ',
-                        StringSplitOptions.RemoveEmptyEntries |
-                        StringSplitOptions.TrimEntries);
-                    int.TryParse(splitLine[2], out int resourceID);
-                    if (resourceID < 400)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        resourceDefine.Add(resourceID, splitLine[1]);
-                    }
-                }
-            }
+            //foreach (string headerFile in SfxResHeader)
+            //{
+            //    foreach (string line in File.ReadLines(headerFile))
+            //    {
+            //        if (!line.StartsWith("#define IDS_") && !line.StartsWith("#define IDT_"))
+            //        {
+            //            continue;
+            //        }
+            //        string[] splitLine = line.Split(
+            //            ' ',
+            //            StringSplitOptions.RemoveEmptyEntries |
+            //            StringSplitOptions.TrimEntries);
+            //        int.TryParse(splitLine[2], out int resourceID);
+            //        if (resourceID < 400)
+            //        {
+            //            continue;
+            //        }
+            //        else
+            //        {
+            //            resourceDefine.Add(resourceID, splitLine[1]);
+            //        }
+            //    }
+            //}
+
+            LinkedList<string> resourceHeader = new();
+
             foreach (string strLength in resourceDefine.Values)
             {
                 formatLength = Math.Max(formatLength, strLength.Length);
             }
             formatLength = (formatLength / 4 + 1) * 4;
+
+            foreach (KeyValuePair<int, string> item in resourceDefine)
+            {
+                resourceHeader.AddLast($"#define {item.Value.PadRight(formatLength, ' ')}{item.Key}");
+            }
+            File.WriteAllLines(
+                $@"{NanaZipSfxRoot}\NanaZipSfxWindowsResources.h",
+                resourceHeader,
+                Encoding.UTF8);
 
             SortedDictionary<string, string> langMapping = new()
             {
@@ -517,10 +522,10 @@ namespace Mile.NanaZipProjectXmlGenerator
             };
 
             LinkedList<string> resourceContent = new();
-            foreach (string headerFile in SfxResHeader)
-            {
-                resourceContent.AddLast($"#include \"{Path.GetFileName(headerFile)}\"");
-            }
+            //foreach (string headerFile in SfxResHeader)
+            //{
+            //    resourceContent.AddLast($"#include \"{Path.GetFileName(headerFile)}\"");
+            //}
             resourceContent.AddLast("");
             foreach (string txtFile in Directory.GetFiles(SevenZipLangRoot))
             {
@@ -570,7 +575,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 resourceContent.AddLast("");
             }
             File.WriteAllLines(
-                $@"{NanaZipSfxRoot}\NanaZipSfxWindows.rc",
+                $@"{NanaZipSfxRoot}\NanaZipSfxWindowsResources.rc",
                 resourceContent,
                 Encoding.Unicode);
         }
@@ -581,14 +586,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //string Result = GenerateArchiveTypesManifestDefinitions();
 
-            SwitchToPreview();
+            //SwitchToPreview();
             //SwitchToRelease();
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
 
-            //ConvertSevenZipLanguageFilesToSfxSelfContain();
+            ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
