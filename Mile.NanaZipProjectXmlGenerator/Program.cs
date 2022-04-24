@@ -506,7 +506,7 @@ namespace Mile.NanaZipProjectXmlGenerator
             File.WriteAllLines(
                 $@"{NanaZipSfxRoot}\NanaZipSfxWindowsResources.h",
                 resourceHeader,
-                Encoding.U);
+                Encoding.UTF8);
 
             SortedDictionary<string, string> langMapping = new()
             {
