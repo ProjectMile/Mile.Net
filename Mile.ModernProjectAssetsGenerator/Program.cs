@@ -35,22 +35,22 @@ namespace Mile.ModernProjectAssetsGenerator
                 @"ArchiveFile");
         }
 
-        static void NagisaProject()
+        static void NanaGetProject()
         {
-            string sourceRoot = @"D:\Projects\MouriNaruto\Nagisa\Assets\";
-            string outputPath = @"D:\TemporaryWorkspace\NagisaWorkspace";
+            string sourceRoot = @"D:\Projects\MouriNaruto\NanaGet\Assets\";
+            string outputPath = @"D:\Projects\MouriNaruto\NanaGet\Assets\PackageAssets";
 
             MsixPackageAssetsGenerator.GenerateApplicationImageAssets(
-                sourceRoot + @"Nagisa_HighResolution_ContrastStandard.png",
-                sourceRoot + @"Nagisa_HighResolution_ContrastBlack.png",
-                sourceRoot + @"Nagisa_HighResolution_ContrastWhite.png",
+                sourceRoot + @"NanaGet_HighResolution_ContrastStandard.png",
+                sourceRoot + @"NanaGet_HighResolution_ContrastBlack.png",
+                sourceRoot + @"NanaGet_HighResolution_ContrastWhite.png",
                 outputPath);
         }
 
         static void Main(string[] args)
         {
-            NanaZipProject();
-            //NagisaProject();
+            //NanaZipProject();
+            NanaGetProject();
 
             Console.WriteLine("Hello World!");
 
