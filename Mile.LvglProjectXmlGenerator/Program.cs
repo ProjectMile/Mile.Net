@@ -50,9 +50,9 @@ namespace Mile.LvglProjectXmlGenerator
 
         static void Main(string[] args)
         {
-            MileUefiProject();
+            //MileUefiProject();
             //LvglWindowsProject();
-            //LvglSimulatorProject();
+            LvglSimulatorProject();
 
             Console.WriteLine("Hello World!");
 
