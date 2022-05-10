@@ -463,6 +463,11 @@ namespace Mile.NanaZipProjectXmlGenerator
             //string[] SfxResHeader = {};
             SortedDictionary<int, string> resourceDefine = new()
             {
+                { 401, "REDIRECTED_IDOK" },
+                { 402, "REDIRECTED_IDCANCEL" },
+                { 406, "REDIRECTED_IDYES" },
+                { 407, "REDIRECTED_IDNO" },
+
                 { 444, "IDB_PROGRESS_BACKGROUND" },
                 { 446, "IDB_PAUSE" },
                 { 3900, "IDT_PROGRESS_ELAPSED" },
@@ -677,13 +682,13 @@ namespace Mile.NanaZipProjectXmlGenerator
             //string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
-            //SwitchToRelease();
+            SwitchToRelease();
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
 
-            ConvertSevenZipLanguageFilesToSfxSelfContain();
+            //ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
