@@ -677,14 +677,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             //string Result = GenerateArchiveTypesManifestDefinitions();
 
-            //SwitchToPreview();
+            SwitchToPreview();
             //SwitchToRelease();
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
 
-            ConvertSevenZipLanguageFilesToSfxSelfContain();
+            //ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
