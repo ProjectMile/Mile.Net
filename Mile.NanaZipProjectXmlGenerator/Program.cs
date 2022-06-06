@@ -623,10 +623,6 @@ namespace Mile.NanaZipProjectXmlGenerator
                 string fileName = Path.GetFileName(txtFile);
 
                 string langName = Path.GetFileNameWithoutExtension(txtFile);
-                if (langName == "en")
-                {
-                    continue;
-                }
                 if (langMapping.ContainsKey(langName))
                 {
                     langMapping.TryGetValue(langName, out langName);
@@ -682,13 +678,13 @@ namespace Mile.NanaZipProjectXmlGenerator
             //string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
-            SwitchToRelease();
+            //SwitchToRelease();
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
 
-            //ConvertSevenZipLanguageFilesToSfxSelfContain();
+            ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
