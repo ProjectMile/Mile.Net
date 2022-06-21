@@ -328,10 +328,20 @@ namespace Mile.NanaZipProjectXmlGenerator
                     item.Extension != ".sh" &&
                     item.Extension != ".asm"))
                 {
-                    File.WriteAllText(
-                        item.FullName,
-                        File.ReadAllText(item.FullName, Encoding.UTF8),
-                        Encoding.UTF8);
+                    try
+                    {
+                        File.WriteAllText(
+                            item.FullName,
+                            File.ReadAllText(item.FullName, Encoding.UTF8),
+                            Encoding.UTF8);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(
+                            "{0}: {1}",
+                            item.FullName,
+                            ex.Message);
+                    }
                 }
                 else
                 {
@@ -373,10 +383,9 @@ namespace Mile.NanaZipProjectXmlGenerator
 
         static string ConvertSevenZipLanguageFilesToModernResources()
         {
-            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
-            string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
-            string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
-            string NanaZipStringsRoot = $@"{NanaZipSourceRoot}\NanaZipPackage\Strings\";
+            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
+            string SevenZipLangRoot = $@"D:\Projects\MouriNaruto\NanaZipLegacyLang";
+            string NanaZipStringsRoot = $@"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Strings\";
 
             SortedSet<string> unspportedLang = new()
             {
@@ -457,9 +466,8 @@ namespace Mile.NanaZipProjectXmlGenerator
 
         static void ConvertSevenZipLanguageFilesToSfxSelfContain()
         {
-            string NanaZipSourceRoot = @"D:\Projects\MouriNaruto\NanaZip\";
-            string SevenZipLangRoot = $@"{NanaZipSourceRoot}\SevenZip\Lang\";
-            string NanaZipSfxRoot = $@"{NanaZipSourceRoot}\NanaZipSfxWindows\";
+            string SevenZipLangRoot = $@"D:\Projects\MouriNaruto\NanaZipLegacyLang";
+            string NanaZipSfxRoot = $@"D:\Projects\MouriNaruto\NanaZip\NanaZipSfxWindows\";
             //string[] SfxResHeader = {};
             SortedDictionary<int, string> resourceDefine = new()
             {
