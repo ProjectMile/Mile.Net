@@ -31,6 +31,7 @@ namespace Mile.NanaZipProjectXmlGenerator
             {
                 "001",
                 "7z",
+                "apfs",
                 "arj",
                 "bz2",
                 "bzip2",
@@ -85,15 +86,13 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             return string.Format(
                 "        <uap:Extension Category=\"windows.fileTypeAssociation\">\r\n" +
-                "          <uap:FileTypeAssociation Name=\"fileassociations\">\r\n" +
+                "          <uap3:FileTypeAssociation Name=\"fileassociations\" Parameters=\"&quot;%1&quot;\">\r\n" +
                 "            <uap:Logo>Assets\\ArchiveFile.png</uap:Logo>\r\n" +
                 "            <uap:SupportedFileTypes>\r\n" +
                 "{0}" +
+                "              <uap10:FileType>*</uap10:FileType>\r\n" +
                 "            </uap:SupportedFileTypes>\r\n" +
-                "            <uap2:SupportedVerbs>\r\n" +
-                "              <uap3:Verb Id=\"open\" Parameters=\"&quot;%1&quot;\">open</uap3:Verb>\r\n" +
-                "            </uap2:SupportedVerbs>\r\n" +
-                "          </uap:FileTypeAssociation>\r\n" +
+                "          </uap3:FileTypeAssociation>\r\n" +
                 "        </uap:Extension>\r\n",
                 Result);
         }
@@ -683,12 +682,15 @@ namespace Mile.NanaZipProjectXmlGenerator
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            //string Result = GenerateArchiveTypesManifestDefinitions();
+            string Result = GenerateArchiveTypesManifestDefinitions();
 
-            SwitchToPreview();
+            //SwitchToPreview();
             //SwitchToRelease();
 
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Brotli");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\RHash");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
 
