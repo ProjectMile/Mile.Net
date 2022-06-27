@@ -688,8 +688,13 @@ namespace Mile.NanaZipProjectXmlGenerator
             //SwitchToRelease();
 
             ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\BLAKE3");
             ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Brotli");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Lizard");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ4");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ5");
             ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\RHash");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\xxHash");
             ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
