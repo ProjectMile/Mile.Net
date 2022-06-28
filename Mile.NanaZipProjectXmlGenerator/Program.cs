@@ -382,7 +382,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
         static string ConvertSevenZipLanguageFilesToModernResources()
         {
-            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
+            string ReswTemplatePath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\ItemTemplates\WapProj\1033\Resw\Resources.resw";
             string SevenZipLangRoot = $@"D:\Projects\MouriNaruto\NanaZipLegacyLang";
             string NanaZipStringsRoot = $@"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Strings\";
 
@@ -682,24 +682,23 @@ namespace Mile.NanaZipProjectXmlGenerator
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            string Result = GenerateArchiveTypesManifestDefinitions();
+            //string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
             //SwitchToRelease();
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\BLAKE3");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Brotli");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Lizard");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ4");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ5");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\RHash");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\xxHash");
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\BLAKE3");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Brotli");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Lizard");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ4");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ5");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\RHash");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\xxHash");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
 
-            //string Result = ConvertSevenZipLanguageFilesToModernResources();
-
-            //ConvertSevenZipLanguageFilesToSfxSelfContain();
+            string Result = ConvertSevenZipLanguageFilesToModernResources();
+            ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
