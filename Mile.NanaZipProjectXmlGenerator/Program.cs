@@ -444,9 +444,13 @@ namespace Mile.NanaZipProjectXmlGenerator
 
                     data.SetAttribute("name", $"Resource{item.Key}");
                     data.SetAttribute("xml:space", "preserve");
+              
+                    string result = item.Value;
+                    result = result.Replace("\\r", "\r");
+                    result = result.Replace("\\n", "\n");
 
                     XmlElement dataValue = resw.CreateElement("value");
-                    dataValue.InnerText = item.Value;
+                    dataValue.InnerText = result;
 
                     data.AppendChild(dataValue);
 
