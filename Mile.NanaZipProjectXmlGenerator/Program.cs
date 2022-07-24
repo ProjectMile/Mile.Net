@@ -44,6 +44,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 "gz",
                 "gzip",
                 "hfs",
+                "hfsx",
                 "iso",
                 "lha",
                 "liz",
@@ -686,7 +687,7 @@ namespace Mile.NanaZipProjectXmlGenerator
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            //string Result = GenerateArchiveTypesManifestDefinitions();
+            string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
             //SwitchToRelease();
@@ -701,8 +702,8 @@ namespace Mile.NanaZipProjectXmlGenerator
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\xxHash");
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
 
-            string Result = ConvertSevenZipLanguageFilesToModernResources();
-            ConvertSevenZipLanguageFilesToSfxSelfContain();
+            //string Result = ConvertSevenZipLanguageFilesToModernResources();
+            //ConvertSevenZipLanguageFilesToSfxSelfContain();
 
             Console.WriteLine("Hello World!");
 
