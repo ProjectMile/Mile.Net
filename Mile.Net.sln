@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaZipProjectXmlGener
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.GenerateExportDefinitionFiles", "Mile.GenerateExportDefinitionFiles\Mile.GenerateExportDefinitionFiles.csproj", "{9BFCA91B-0D43-4A5B-961F-506B99670945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mile.NanaBoxProjectXmlGenerator", "Mile.NanaBoxProjectXmlGenerator\Mile.NanaBoxProjectXmlGenerator.csproj", "{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaBoxProjectXmlGenerator", "Mile.NanaBoxProjectXmlGenerator\Mile.NanaBoxProjectXmlGenerator.csproj", "{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mile.NanaGetProjectXmlGenerator", "Mile.NanaGetProjectXmlGenerator\Mile.NanaGetProjectXmlGenerator.csproj", "{504A91F1-04CE-49EE-BA15-6E7792A7F58B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
