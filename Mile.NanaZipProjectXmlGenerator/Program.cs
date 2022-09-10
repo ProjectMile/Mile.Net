@@ -193,6 +193,70 @@ namespace Mile.NanaZipProjectXmlGenerator
                     Content,
                     Encoding.ASCII);
             }
+
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipInstaller\NanaZipInstaller.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipSfx.ico",
+                    "Assets/NanaZipPreviewSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.Unicode);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXCon\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipSfx.ico",
+                    "Assets/NanaZipPreviewSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXSetup\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipSfx.ico",
+                    "Assets/NanaZipPreviewSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXWin\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipSfx.ico",
+                    "Assets/NanaZipPreviewSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
         }
 
         static void SwitchToRelease()
@@ -285,6 +349,70 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Content = Content.Replace(
                     "IDI_ICON ICON \"../../../../../Assets/NanaZipPreview.ico\"",
                     "IDI_ICON ICON \"../../../../../Assets/NanaZip.ico\"");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\NanaZipInstaller\NanaZipInstaller.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipPreviewSfx.ico",
+                    "Assets/NanaZipSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.Unicode);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXCon\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                     "Assets/NanaZipPreviewSfx.ico",
+                     "Assets/NanaZipSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXSetup\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipPreviewSfx.ico",
+                    "Assets/NanaZipSfx.ico");
+                File.WriteAllText(
+                    Path,
+                    Content,
+                    Encoding.ASCII);
+            }
+
+            {
+                string Path = string.Format(
+                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXWin\resource.rc",
+                    NanaZipSourceRoot);
+                string Content = File.ReadAllText(
+                    Path,
+                    Encoding.UTF8);
+                Content = Content.Replace(
+                    "Assets/NanaZipPreviewSfx.ico",
+                    "Assets/NanaZipSfx.ico");
                 File.WriteAllText(
                     Path,
                     Content,
@@ -625,17 +753,48 @@ namespace Mile.NanaZipProjectXmlGenerator
                 Encoding.Unicode);
         }
 
+
+        static string GeneratePackageManifestResourceIdentities()
+        {
+            string Result = "";
+
+            DirectoryInfo folder = new DirectoryInfo(
+                @"D:\Projects\MouriNaruto\NanaZip\NanaZipPackage\Strings");
+
+            foreach (var item in folder.GetDirectories())
+            {
+                Result += string.Format(
+                    "    <Resource Language=\"{0}\" />\r\n",
+                    item.Name);
+            }
+
+            int[] Scales = new int[]
+            {
+                100, 125, 150, 200, 400
+            };
+
+            foreach (var scale in Scales)
+            {
+                Result += string.Format(
+                    "    <Resource uap:Scale=\"{0}\" />\r\n",
+                    scale.ToString());
+            }
+
+            return Result;
+        }
         public static void Main(string[] args)
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            string Result = GenerateArchiveTypesManifestDefinitions();
+            //string Result = GenerateArchiveTypesManifestDefinitions();
 
-            //SwitchToPreview();
+            SwitchToPreview();
             //SwitchToRelease();
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
             //ConvertSevenZipLanguageFilesToSfxSelfContain();
+
+            //string Result = GeneratePackageManifestResourceIdentities();
 
             Console.WriteLine("Hello World!");
 
