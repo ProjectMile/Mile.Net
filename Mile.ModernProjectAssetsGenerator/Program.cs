@@ -45,6 +45,24 @@ namespace Mile.ModernProjectAssetsGenerator
                 sourceRoot + @"NanaGet_HighResolution_ContrastBlack.png",
                 sourceRoot + @"NanaGet_HighResolution_ContrastWhite.png",
                 outputPath);
+
+            MsixPackageAssetsGenerator.GenerateFileAssociationImageAssets(
+                sourceRoot + @"NanaGet_HighResolution_MetadataFile.png",
+                outputPath,
+                @"MetadataFile");
+
+            outputPath = @"D:\Projects\MouriNaruto\NanaGet\Assets\PreviewPackageAssets";
+
+            MsixPackageAssetsGenerator.GenerateApplicationImageAssets(
+                sourceRoot + @"NanaGetPreview_HighResolution_ContrastStandard.png",
+                sourceRoot + @"NanaGetPreview_HighResolution_ContrastBlack.png",
+                sourceRoot + @"NanaGetPreview_HighResolution_ContrastWhite.png",
+                outputPath);
+
+            MsixPackageAssetsGenerator.GenerateFileAssociationImageAssets(
+                sourceRoot + @"NanaGetPreview_HighResolution_MetadataFile.png",
+                outputPath,
+                @"MetadataFile");
         }
 
         static void NanaBoxProject()
@@ -80,8 +98,8 @@ namespace Mile.ModernProjectAssetsGenerator
         static void Main(string[] args)
         {
             //NanaZipProject();
-            //NanaGetProject();
-            NanaBoxProject();
+            NanaGetProject();
+            //NanaBoxProject();
 
             Console.WriteLine("Hello World!");
 
