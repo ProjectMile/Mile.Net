@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaBoxProjectXmlGener
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaGetProjectXmlGenerator", "Mile.NanaGetProjectXmlGenerator\Mile.NanaGetProjectXmlGenerator.csproj", "{504A91F1-04CE-49EE-BA15-6E7792A7F58B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mile.ConvertFilesToUtf8Bom", "Mile.ConvertFilesToUtf8Bom\Mile.ConvertFilesToUtf8Bom.csproj", "{8809CC2E-34D5-40CB-833E-C120DE4B8D59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.ConvertFilesToUtf8Bom", "Mile.ConvertFilesToUtf8Bom\Mile.ConvertFilesToUtf8Bom.csproj", "{8809CC2E-34D5-40CB-833E-C120DE4B8D59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mile.MileXamlProjectXmlGengerator", "Mile.MileXamlProjectXmlGengerator\Mile.MileXamlProjectXmlGengerator.csproj", "{ACFB0BBC-8E9D-4F9F-8CBB-2B1FFDC72C36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{8809CC2E-34D5-40CB-833E-C120DE4B8D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8809CC2E-34D5-40CB-833E-C120DE4B8D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8809CC2E-34D5-40CB-833E-C120DE4B8D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFB0BBC-8E9D-4F9F-8CBB-2B1FFDC72C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFB0BBC-8E9D-4F9F-8CBB-2B1FFDC72C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFB0BBC-8E9D-4F9F-8CBB-2B1FFDC72C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFB0BBC-8E9D-4F9F-8CBB-2B1FFDC72C36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
