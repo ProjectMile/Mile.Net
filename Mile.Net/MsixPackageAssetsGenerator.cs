@@ -41,7 +41,7 @@ namespace Mile.Net
                 AssetType[] assetTypes = new AssetType[]
                 {
                     new AssetType("LargeTile", 310, 310, 96),
-                    new AssetType("LockScreenLogo", 24, 24, 24),
+                    //new AssetType("LockScreenLogo", 24, 24, 24),
                     new AssetType("SmallTile", 71, 71, 36),
                     //new AssetType("SplashScreen", 620, 300, 96),
                     new AssetType("Square44x44Logo", 44, 44, 32),
