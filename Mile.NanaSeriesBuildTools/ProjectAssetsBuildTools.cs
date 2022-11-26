@@ -151,5 +151,126 @@ namespace Mile.NanaSeriesBuildTools
                     OutputPath + @"\..\NanaZipPreview.png");
             }
         }
+
+        public static void GenerateNanaBoxAssets()
+        {
+            {
+                string SourcePath = @"D:\Projects\MouriNaruto\NanaBox\Assets\OriginalAssets\NanaBox";
+
+                string OutputPath = @"D:\Projects\MouriNaruto\NanaBox\Assets\PackageAssets";
+
+                ConcurrentDictionary<int, MagickImage> StandardSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+                ConcurrentDictionary<int, MagickImage> ContrastBlackSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+                ConcurrentDictionary<int, MagickImage> ContrastWhiteSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+
+                ConcurrentDictionary<int, MagickImage> ConfigurationFileSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+
+                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                {
+                    StandardSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "Standard",
+                        AssetSize));
+                    ContrastBlackSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "ContrastBlack",
+                        AssetSize));
+                    ContrastWhiteSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "ContrastWhite",
+                        AssetSize));
+
+                    ConfigurationFileSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "ConfigurationFile",
+                        AssetSize));
+                }
+
+                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                    StandardSources,
+                    ContrastBlackSources,
+                    ContrastWhiteSources,
+                    OutputPath);
+
+                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                    ConfigurationFileSources,
+                    OutputPath,
+                    @"ConfigurationFile");
+
+                AssetsGenerator.GenerateIconFile(
+                    StandardSources,
+                    OutputPath + @"\..\NanaBox.ico");
+
+                StandardSources[64].Write(
+                    OutputPath + @"\..\NanaBox.png");
+            }
+
+            {
+                string SourcePath = @"D:\Projects\MouriNaruto\NanaBox\Assets\OriginalAssets\NanaBoxPreview";
+
+                string OutputPath = @"D:\Projects\MouriNaruto\NanaBox\Assets\PreviewPackageAssets";
+
+                ConcurrentDictionary<int, MagickImage> StandardSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+                ConcurrentDictionary<int, MagickImage> ContrastBlackSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+                ConcurrentDictionary<int, MagickImage> ContrastWhiteSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+
+                ConcurrentDictionary<int, MagickImage> ConfigurationFileSources =
+                    new ConcurrentDictionary<int, MagickImage>();
+
+                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                {
+                    StandardSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "Standard",
+                        AssetSize));
+                    ContrastBlackSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "ContrastBlack",
+                        AssetSize));
+                    ContrastWhiteSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "ContrastWhite",
+                        AssetSize));
+
+                    ConfigurationFileSources[AssetSize] = new MagickImage(string.Format(
+                        @"{0}\{1}\{1}_{2}.png",
+                        SourcePath,
+                        "ConfigurationFile",
+                        AssetSize));
+                }
+
+                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                    StandardSources,
+                    ContrastBlackSources,
+                    ContrastWhiteSources,
+                    OutputPath);
+
+                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                    ConfigurationFileSources,
+                    OutputPath,
+                    @"ConfigurationFile");
+
+                AssetsGenerator.GenerateIconFile(
+                    StandardSources,
+                    OutputPath + @"\..\NanaBoxPreview.ico");
+
+                StandardSources[64].Write(
+                    OutputPath + @"\..\NanaBoxPreview.png");
+            }
+        }
     }
 }
