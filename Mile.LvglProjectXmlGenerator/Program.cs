@@ -29,30 +29,10 @@ namespace Mile.LvglProjectXmlGenerator
                 @"LVGL.Portable");
         }
 
-        static void LvglSimulatorProject()
-        {
-            string rootPath =
-                @"D:\Projects\lvgl\lv_sim_visual_studio\LVGL.Simulator";
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\lvgl",
-                rootPath + @"\",
-                rootPath,
-                @"LVGL.Portable");
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\lv_drivers",
-                rootPath + @"\",
-                rootPath,
-                @"LVGL.Drivers");
-        }
-
-
         static void Main(string[] args)
         {
             //MileUefiProject();
             //LvglWindowsProject();
-            LvglSimulatorProject();
 
             Console.WriteLine("Hello World!");
 
