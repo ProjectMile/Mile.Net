@@ -89,10 +89,10 @@ namespace Mile.NanaBoxProjectXmlGenerator
 
         static void Main(string[] args)
         {
-            //SwitchToPreview();
+            SwitchToPreview();
             //SwitchToRelease();
 
-            string Result = GeneratePackageManifestResourceIdentities();
+            //string Result = GeneratePackageManifestResourceIdentities();
 
             Console.WriteLine("Hello, World!");
 
