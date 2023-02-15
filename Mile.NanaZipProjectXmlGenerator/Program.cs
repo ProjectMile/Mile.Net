@@ -33,6 +33,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 "7z",
                 "apfs",
                 "arj",
+                "br",
                 "bz2",
                 "bzip2",
                 "cab",
@@ -53,6 +54,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 "lz5",
                 "lzh",
                 "lzma",
+                "lzma2",
                 "ntfs",
                 "rar",
                 "rpm",
@@ -73,7 +75,8 @@ namespace Mile.NanaZipProjectXmlGenerator
                 "xz",
                 "z",
                 "zip",
-                "zst"
+                "zst",
+                "zstd"
             };
 
             string Result = "";
@@ -786,9 +789,9 @@ namespace Mile.NanaZipProjectXmlGenerator
         {
             //GenerateSharedSevenZipZStandardProject();
 
-            //string Result = GenerateArchiveTypesManifestDefinitions();
+            string Result = GenerateArchiveTypesManifestDefinitions();
 
-            SwitchToPreview();
+            //SwitchToPreview();
             //SwitchToRelease();
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
