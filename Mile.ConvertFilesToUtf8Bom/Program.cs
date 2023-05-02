@@ -36,15 +36,20 @@ namespace Mile.ConvertFilesToUtf8Bom
                     item.Extension == ".ipp" ||
                     item.Extension == ".tlh" ||
                     item.Extension == ".tli" ||
-                    (item.Extension != ".rc" &&
-                    item.Extension != ".sh" &&
-                    item.Extension != ".asm"))
+                    item.Extension == ".xaml" ||
+                    item.Extension == ".resw" ||
+                    item.Extension == ".manifest" ||
+                    item.Extension == ".props" ||
+                    item.Extension == ".targets" ||                      
+                    item.Extension == ".md")
                 {
                     try
                     {
                         File.WriteAllText(
                             item.FullName,
-                            File.ReadAllText(item.FullName, Encoding.UTF8),
+                            File.ReadAllText(
+                                item.FullName,
+                                Encoding.UTF8).ReplaceLineEndings("\r\n"),
                             Encoding.UTF8);
                     }
                     catch (Exception ex)
@@ -83,6 +88,8 @@ namespace Mile.ConvertFilesToUtf8Bom
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2.Dependencies");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Xaml\Mile.Xaml.Managed");
+
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaBox\NanaBox");
 
             Console.WriteLine("Hello, World!");
 
