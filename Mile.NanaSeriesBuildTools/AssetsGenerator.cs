@@ -110,7 +110,7 @@ namespace Mile.NanaSeriesBuildTools
 
             foreach (AssetType item in allAssetSizes)
             {
-                tasks.Add(Task.Run(async () =>
+                tasks.Add(Task.Run(() =>
                 {
                     MagickImage sourceImage = new MagickImage(
                         StandardSources[item.IconSize]);
@@ -130,7 +130,7 @@ namespace Mile.NanaSeriesBuildTools
                             item.Name));
                 }));
 
-                tasks.Add(Task.Run(async () =>
+                tasks.Add(Task.Run(() =>
                 {
                     MagickImage sourceImage = new MagickImage(
                        ContrastBlackSources[item.IconSize]);
@@ -150,7 +150,7 @@ namespace Mile.NanaSeriesBuildTools
                             item.Name));
                 }));
 
-                tasks.Add(Task.Run(async () =>
+                tasks.Add(Task.Run(() =>
                 {
                     MagickImage sourceImage = new MagickImage(
                        ContrastWhiteSources[item.IconSize]);
@@ -183,7 +183,7 @@ namespace Mile.NanaSeriesBuildTools
 
             foreach (int AssetSize in AssetsUtils.AssetSizes)
             {
-                tasks.Add(Task.Run(async () =>
+                tasks.Add(Task.Run(() =>
                 {
                     MagickImage sourceImage = new MagickImage(
                         ImageSources[AssetSize]);
