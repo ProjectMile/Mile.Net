@@ -74,7 +74,15 @@ namespace Mile.ConvertFilesToUtf8Bom
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\xxHash");
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaRun\ThirdParty\Detours");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaRun\ThirdParty\Detours");
+
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Archived");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2.Wslay");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2.Dependencies");
+
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Xaml\Mile.Xaml.Managed");
 
             Console.WriteLine("Hello, World!");
 
