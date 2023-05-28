@@ -17,22 +17,9 @@ namespace Mile.LvglProjectXmlGenerator
                 @"LVGL.Portable");
         }
 
-        static void LvglWindowsProject()
-        {
-            string rootPath =
-                @"D:\Projects\lvgl\lv_port_windows\LVGL.Windows";
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\lvgl",
-                rootPath + @"\",
-                rootPath,
-                @"LVGL.Portable");
-        }
-
         static void Main(string[] args)
         {
             //MileUefiProject();
-            //LvglWindowsProject();
 
             Console.WriteLine("Hello World!");
 
