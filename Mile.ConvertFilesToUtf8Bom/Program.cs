@@ -69,27 +69,18 @@ namespace Mile.ConvertFilesToUtf8Bom
 
         static void Main(string[] args)
         {
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Core");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Sfx");
+
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\BLAKE3");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Brotli");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Lizard");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ4");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\LZ5");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\RHash");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\xxHash");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\ThirdParty\Zstandard");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaRun\ThirdParty\Detours");
 
-            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Archived");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2.Wslay");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2_Prototype_20230331\Mile.Aria2.Dependencies");
+            ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Xaml\Mile.Xaml.Managed");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaBox\NanaBox");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaBox\NanaBox");
 
             Console.WriteLine("Hello, World!");
 
