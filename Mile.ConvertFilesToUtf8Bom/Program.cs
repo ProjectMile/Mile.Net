@@ -76,11 +76,15 @@ namespace Mile.ConvertFilesToUtf8Bom
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaRun\ThirdParty\Detours");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Xaml\Mile.Xaml.Managed");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaBox\NanaBox");
+
+            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs\Lizard");
+
+            ConvertFilesToUtf8Bom(@"D:\Projects\Chuyu-Team\MINT\Mint\Mint.Implementation");
 
             Console.WriteLine("Hello, World!");
 
