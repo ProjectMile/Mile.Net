@@ -1,5 +1,4 @@
-﻿using Mile.Net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -12,18 +11,6 @@ namespace Mile.NanaZipProjectXmlGenerator
     {
         [DllImport(@"kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         static extern ushort LocaleNameToLCID(string lpName, uint dwFlags);
-
-        static void GenerateSharedSevenZipZStandardProject()
-        {
-            string rootPath =
-                @"D:\Projects\MouriNaruto\NanaZip\SevenZip\C";
-
-            VisualStudioCppItemsProjectGenerator.Generate(
-                rootPath + @"\",
-                rootPath + @"\",
-                rootPath,
-                @"../NanaZip.Shared.SevenZipZStandard.Files");
-        }
 
         static string GenerateArchiveTypesManifestDefinitions()
         {
@@ -791,8 +778,6 @@ namespace Mile.NanaZipProjectXmlGenerator
         }
         public static void Main(string[] args)
         {
-            //GenerateSharedSevenZipZStandardProject();
-
             string Result = GenerateArchiveTypesManifestDefinitions();
 
             //SwitchToPreview();
