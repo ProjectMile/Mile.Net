@@ -84,7 +84,9 @@ namespace Mile.ConvertFilesToUtf8Bom
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs\Lizard");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\Chuyu-Team\MINT\Mint\Mint.Implementation");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\Chuyu-Team\MINT\Mint\Mint.Implementation");
+
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs\Zstandard");
 
             Console.WriteLine("Hello, World!");
 
