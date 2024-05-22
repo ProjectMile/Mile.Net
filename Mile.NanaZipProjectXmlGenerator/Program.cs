@@ -123,7 +123,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\NanaZipShellExtension\NanaZipShellExtension.cpp",
+                    @"{0}\NanaZip.UI.Modern\NanaZip.ShellExtension.cpp",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -158,14 +158,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\UI\FileManager\resource.rc",
+                    @"{0}\NanaZip.UI.Modern\SevenZip\CPP\7zip\UI\FileManager\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
                     Encoding.UTF8);
                 Content = Content.Replace(
-                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZip.ico\"",
-                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZipPreview.ico\"");
+                    "Assets/NanaZip.ico",
+                    "Assets/NanaZipPreview.ico");
                 File.WriteAllText(
                     Path,
                     Content,
@@ -174,14 +174,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\UI\GUI\resource.rc",
+                    @"{0}\NanaZip.UI.Modern\SevenZip\CPP\7zip\UI\GUI\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
                     Encoding.UTF8);
                 Content = Content.Replace(
-                    "IDI_ICON ICON \"../../../../../Assets/NanaZip.ico\"",
-                    "IDI_ICON ICON \"../../../../../Assets/NanaZipPreview.ico\"");
+                    "Assets/NanaZip.ico",
+                    "Assets/NanaZipPreview.ico");
                 File.WriteAllText(
                     Path,
                     Content,
@@ -190,23 +190,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\NanaZipInstaller\NanaZipInstaller.rc",
-                    NanaZipSourceRoot);
-                string Content = File.ReadAllText(
-                    Path,
-                    Encoding.UTF8);
-                Content = Content.Replace(
-                    "Assets/NanaZipSfx.ico",
-                    "Assets/NanaZipPreviewSfx.ico");
-                File.WriteAllText(
-                    Path,
-                    Content,
-                    Encoding.Unicode);
-            }
-
-            {
-                string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXCon\resource.rc",
+                    @"{0}\NanaZip.Core\SevenZip\CPP\7zip\Bundles\SFXCon\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -222,7 +206,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXSetup\resource.rc",
+                    @"{0}\NanaZip.Core\SevenZip\CPP\7zip\Bundles\SFXSetup\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -238,7 +222,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXWin\resource.rc",
+                    @"{0}\NanaZip.Core\SevenZip\CPP\7zip\Bundles\SFXWin\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -284,7 +268,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\NanaZipShellExtension\NanaZipShellExtension.cpp",
+                    @"{0}\NanaZip.UI.Modern\NanaZip.ShellExtension.cpp",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -319,14 +303,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\UI\FileManager\resource.rc",
+                    @"{0}\NanaZip.UI.Modern\SevenZip\CPP\7zip\UI\FileManager\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
                     Encoding.UTF8);
                 Content = Content.Replace(
-                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZipPreview.ico\"",
-                    "IDI_ICON  ICON  \"../../../../../Assets/NanaZip.ico\"");
+                    "Assets/NanaZipPreview.ico",
+                    "Assets/NanaZip.ico");
                 File.WriteAllText(
                     Path,
                     Content,
@@ -335,14 +319,14 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\UI\GUI\resource.rc",
+                    @"{0}\NanaZip.UI.Modern\SevenZip\CPP\7zip\UI\GUI\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
                     Encoding.UTF8);
                 Content = Content.Replace(
-                    "IDI_ICON ICON \"../../../../../Assets/NanaZipPreview.ico\"",
-                    "IDI_ICON ICON \"../../../../../Assets/NanaZip.ico\"");
+                    "Assets/NanaZipPreview.ico",
+                    "Assets/NanaZip.ico");
                 File.WriteAllText(
                     Path,
                     Content,
@@ -351,23 +335,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\NanaZipInstaller\NanaZipInstaller.rc",
-                    NanaZipSourceRoot);
-                string Content = File.ReadAllText(
-                    Path,
-                    Encoding.UTF8);
-                Content = Content.Replace(
-                    "Assets/NanaZipPreviewSfx.ico",
-                    "Assets/NanaZipSfx.ico");
-                File.WriteAllText(
-                    Path,
-                    Content,
-                    Encoding.Unicode);
-            }
-
-            {
-                string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXCon\resource.rc",
+                    @"{0}\NanaZip.Core\SevenZip\CPP\7zip\Bundles\SFXCon\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -383,7 +351,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXSetup\resource.rc",
+                    @"{0}\NanaZip.Core\SevenZip\CPP\7zip\Bundles\SFXSetup\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -399,7 +367,7 @@ namespace Mile.NanaZipProjectXmlGenerator
 
             {
                 string Path = string.Format(
-                    @"{0}\SevenZip\CPP\7zip\Bundles\SFXWin\resource.rc",
+                    @"{0}\NanaZip.Core\SevenZip\CPP\7zip\Bundles\SFXWin\resource.rc",
                     NanaZipSourceRoot);
                 string Content = File.ReadAllText(
                     Path,
@@ -778,9 +746,9 @@ namespace Mile.NanaZipProjectXmlGenerator
         }
         public static void Main(string[] args)
         {
-            string Result = GenerateArchiveTypesManifestDefinitions();
+            //string Result = GenerateArchiveTypesManifestDefinitions();
 
-            //SwitchToPreview();
+            SwitchToPreview();
             //SwitchToRelease();
 
             //string Result = ConvertSevenZipLanguageFilesToModernResources();
