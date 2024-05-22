@@ -72,8 +72,6 @@ namespace Mile.ConvertFilesToUtf8Bom
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Core");
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Sfx");
 
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\SevenZip");
-
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaRun\ThirdParty\Detours");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
@@ -82,11 +80,11 @@ namespace Mile.ConvertFilesToUtf8Bom
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaBox\NanaBox");
 
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs\Lizard");
-
             //ConvertFilesToUtf8Bom(@"D:\Projects\Chuyu-Team\MINT\Mint\Mint.Implementation");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs\Zstandard");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs");
+
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Windows.Internal\Mile.Internal\Mile.Internal.Implementation");
 
             Console.WriteLine("Hello, World!");
 
