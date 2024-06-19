@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.6.0" />
+    <PackageReference Include="Mile.Project.Helpers" Version="1.0.451" />
   </ItemGroup>
 
 </Project>

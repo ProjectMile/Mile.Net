@@ -1,5 +1,6 @@
 ﻿using ImageMagick;
 using System.Collections.Concurrent;
+using Mile.Project.Helpers;
 
 namespace Mile.NanaSeriesBuildTools
 {
@@ -25,7 +26,7 @@ namespace Mile.NanaSeriesBuildTools
                 ConcurrentDictionary<int, MagickImage> SfxStubSources =
                     new ConcurrentDictionary<int, MagickImage>();
 
-                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                foreach (var AssetSize in ProjectAssetsUtilities.AssetSizes)
                 {
                     StandardSources[AssetSize] = new MagickImage(string.Format(
                         @"{0}\{1}\{1}_{2}.png",
@@ -56,22 +57,22 @@ namespace Mile.NanaSeriesBuildTools
                         AssetSize));
                 }
 
-                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageApplicationImageAssets(
                     StandardSources,
                     ContrastBlackSources,
                     ContrastWhiteSources,
                     OutputPath);
 
-                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageFileAssociationImageAssets(
                     ArchiveFileSources,
                     OutputPath,
                     @"ArchiveFile");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     StandardSources,
                     OutputPath + @"\..\NanaZip.ico");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     SfxStubSources,
                     OutputPath + @"\..\NanaZipSfx.ico");
 
@@ -97,7 +98,7 @@ namespace Mile.NanaSeriesBuildTools
                 ConcurrentDictionary<int, MagickImage> SfxStubSources =
                     new ConcurrentDictionary<int, MagickImage>();
 
-                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                foreach (var AssetSize in ProjectAssetsUtilities.AssetSizes)
                 {
                     StandardSources[AssetSize] = new MagickImage(string.Format(
                         @"{0}\{1}\{1}_{2}.png",
@@ -128,22 +129,22 @@ namespace Mile.NanaSeriesBuildTools
                         AssetSize));
                 }
 
-                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageApplicationImageAssets(
                     StandardSources,
                     ContrastBlackSources,
                     ContrastWhiteSources,
                     OutputPath);
 
-                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageFileAssociationImageAssets(
                     ArchiveFileSources,
                     OutputPath,
                     @"ArchiveFile");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     StandardSources,
                     OutputPath + @"\..\NanaZipPreview.ico");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     SfxStubSources,
                     OutputPath + @"\..\NanaZipPreviewSfx.ico");
 
@@ -169,7 +170,7 @@ namespace Mile.NanaSeriesBuildTools
                 ConcurrentDictionary<int, MagickImage> ConfigurationFileSources =
                     new ConcurrentDictionary<int, MagickImage>();
 
-                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                foreach (var AssetSize in ProjectAssetsUtilities.AssetSizes)
                 {
                     StandardSources[AssetSize] = new MagickImage(string.Format(
                         @"{0}\{1}\{1}_{2}.png",
@@ -194,18 +195,18 @@ namespace Mile.NanaSeriesBuildTools
                         AssetSize));
                 }
 
-                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageApplicationImageAssets(
                     StandardSources,
                     ContrastBlackSources,
                     ContrastWhiteSources,
                     OutputPath);
 
-                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageFileAssociationImageAssets(
                     ConfigurationFileSources,
                     OutputPath,
                     @"ConfigurationFile");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     StandardSources,
                     OutputPath + @"\..\NanaBox.ico");
 
@@ -228,7 +229,7 @@ namespace Mile.NanaSeriesBuildTools
                 ConcurrentDictionary<int, MagickImage> ConfigurationFileSources =
                     new ConcurrentDictionary<int, MagickImage>();
 
-                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                foreach (var AssetSize in ProjectAssetsUtilities.AssetSizes)
                 {
                     StandardSources[AssetSize] = new MagickImage(string.Format(
                         @"{0}\{1}\{1}_{2}.png",
@@ -253,18 +254,18 @@ namespace Mile.NanaSeriesBuildTools
                         AssetSize));
                 }
 
-                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageApplicationImageAssets(
                     StandardSources,
                     ContrastBlackSources,
                     ContrastWhiteSources,
                     OutputPath);
 
-                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageFileAssociationImageAssets(
                     ConfigurationFileSources,
                     OutputPath,
                     @"ConfigurationFile");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     StandardSources,
                     OutputPath + @"\..\NanaBoxPreview.ico");
 
@@ -290,7 +291,7 @@ namespace Mile.NanaSeriesBuildTools
                 ConcurrentDictionary<int, MagickImage> MetadataFileSources =
                     new ConcurrentDictionary<int, MagickImage>();
 
-                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                foreach (var AssetSize in ProjectAssetsUtilities.AssetSizes)
                 {
                     StandardSources[AssetSize] = new MagickImage(string.Format(
                         @"{0}\{1}\{1}_{2}.png",
@@ -315,18 +316,18 @@ namespace Mile.NanaSeriesBuildTools
                         AssetSize));
                 }
 
-                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageApplicationImageAssets(
                     StandardSources,
                     ContrastBlackSources,
                     ContrastWhiteSources,
                     OutputPath);
 
-                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageFileAssociationImageAssets(
                     MetadataFileSources,
                     OutputPath,
                     @"MetadataFile");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     StandardSources,
                     OutputPath + @"\..\NanaGet.ico");
 
@@ -349,7 +350,7 @@ namespace Mile.NanaSeriesBuildTools
                 ConcurrentDictionary<int, MagickImage> MetadataFileSources =
                     new ConcurrentDictionary<int, MagickImage>();
 
-                foreach (var AssetSize in AssetsUtils.AssetSizes)
+                foreach (var AssetSize in ProjectAssetsUtilities.AssetSizes)
                 {
                     StandardSources[AssetSize] = new MagickImage(string.Format(
                         @"{0}\{1}\{1}_{2}.png",
@@ -374,18 +375,18 @@ namespace Mile.NanaSeriesBuildTools
                         AssetSize));
                 }
 
-                AssetsGenerator.GeneratePackageApplicationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageApplicationImageAssets(
                     StandardSources,
                     ContrastBlackSources,
                     ContrastWhiteSources,
                     OutputPath);
 
-                AssetsGenerator.GeneratePackageFileAssociationImageAssets(
+                ProjectAssetsUtilities.GeneratePackageFileAssociationImageAssets(
                     MetadataFileSources,
                     OutputPath,
                     @"MetadataFile");
 
-                AssetsGenerator.GenerateIconFile(
+                ProjectAssetsUtilities.GenerateIconFile(
                     StandardSources,
                     OutputPath + @"\..\NanaGetPreview.ico");
 
