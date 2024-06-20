@@ -5,7 +5,6 @@
         static void Main(string[] args)
         {
             //ProjectAssetsBuildTools.GenerateNanaZipAssets();
-            //ProjectAssetsBuildTools.GenerateNanaBoxAssets();
             ProjectAssetsBuildTools.GenerateNanaGetAssets();
 
             Console.WriteLine("Hello, World!");
