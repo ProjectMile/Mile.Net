@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaZipProjectXmlGenerator", "Mile.NanaZipProjectXmlGenerator\Mile.NanaZipProjectXmlGenerator.csproj", "{64B00AA0-0D36-469D-803D-E50C3131E748}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaBoxProjectXmlGenerator", "Mile.NanaBoxProjectXmlGenerator\Mile.NanaBoxProjectXmlGenerator.csproj", "{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.NanaGetProjectXmlGenerator", "Mile.NanaGetProjectXmlGenerator\Mile.NanaGetProjectXmlGenerator.csproj", "{504A91F1-04CE-49EE-BA15-6E7792A7F58B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mile.ConvertFilesToUtf8Bom", "Mile.ConvertFilesToUtf8Bom\Mile.ConvertFilesToUtf8Bom.csproj", "{8809CC2E-34D5-40CB-833E-C120DE4B8D59}"
@@ -23,10 +21,6 @@ Global
 		{64B00AA0-0D36-469D-803D-E50C3131E748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64B00AA0-0D36-469D-803D-E50C3131E748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64B00AA0-0D36-469D-803D-E50C3131E748}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65BBAAAD-69B6-4C4B-BD4E-80BE3336D019}.Release|Any CPU.Build.0 = Release|Any CPU
 		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{504A91F1-04CE-49EE-BA15-6E7792A7F58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
