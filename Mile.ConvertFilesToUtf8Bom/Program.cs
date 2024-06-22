@@ -69,20 +69,10 @@ namespace Mile.ConvertFilesToUtf8Bom
 
         static void Main(string[] args)
         {
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Core");
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Sfx");
-
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaRun\ThirdParty\Detours");
-
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Aria2\Mile.Aria2.Library");
 
-            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Xaml\Mile.Xaml.Managed");
-
-            //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaBox\NanaBox");
-
-            //ConvertFilesToUtf8Bom(@"D:\Projects\Chuyu-Team\MINT\Mint\Mint.Implementation");
-
             ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs");
+            ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Core");
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Windows.Internal\Mile.Internal\Mile.Internal.Implementation");
 
