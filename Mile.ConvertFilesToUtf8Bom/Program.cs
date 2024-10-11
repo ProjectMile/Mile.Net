@@ -74,7 +74,11 @@ namespace Mile.ConvertFilesToUtf8Bom
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Codecs");
             //ConvertFilesToUtf8Bom(@"D:\Projects\MouriNaruto\NanaZip\NanaZip.Core");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Windows.Internal\Mile.Internal\Mile.Internal.Implementation");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Windows.Internal\Mile.Internal\Mile.Internal.Implementation");
+
+            //ConvertFilesToUtf8Bom(@"D:\Projects\halalcloud\halalcloud-client\HalalCloud.BaiduBce");
+
+            ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Dokany\Mile.Dokany");
 
             Console.WriteLine("Hello, World!");
 
