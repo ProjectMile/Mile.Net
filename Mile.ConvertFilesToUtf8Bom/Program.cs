@@ -78,7 +78,9 @@ namespace Mile.ConvertFilesToUtf8Bom
 
             //ConvertFilesToUtf8Bom(@"D:\Projects\halalcloud\halalcloud-client\HalalCloud.BaiduBce");
 
-            ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Dokany\Mile.Dokany");
+            //ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Dokany\Mile.Dokany");
+
+            ConvertFilesToUtf8Bom(@"D:\Projects\ProjectMile\Mile.Uefi\Specification");
 
             Console.WriteLine("Hello, World!");
 
