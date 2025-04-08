@@ -24,6 +24,8 @@ namespace Mile.NanaZipProjectXmlGenerator
                 "bz2",
                 "bzip2",
                 "cab",
+                "cbr",
+                "cbz",
                 "cpio",
                 "deb",
                 "dmg",
