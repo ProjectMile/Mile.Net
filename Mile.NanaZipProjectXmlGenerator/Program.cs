@@ -20,6 +20,7 @@ namespace Mile.NanaZipProjectXmlGenerator
                 "7z",
                 "apfs",
                 "arj",
+                "asar",
                 "br",
                 "bz2",
                 "bzip2",
