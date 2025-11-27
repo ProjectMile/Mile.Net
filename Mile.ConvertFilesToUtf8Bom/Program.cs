@@ -34,6 +34,7 @@ namespace Mile.ConvertFilesToUtf8Bom
                     item.Extension == ".idl" ||
                     item.Extension == ".inl" ||
                     item.Extension == ".ipp" ||
+                    item.Extension == ".i" ||
                     item.Extension == ".tlh" ||
                     item.Extension == ".tli" ||
                     item.Extension == ".xaml" ||
